@@ -12,10 +12,21 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Aesthetic Sage Green Gradient Background */
+        /* Aesthetic Botanical Leaf Background */
         body {
-            background: linear-gradient(135deg, #e6efea 0%, #c3d8cc 50%, #a3c2b0 100%);
-            color: #1e293b;
+            background-color: #dbe6df;
+            background-image: 
+                /* Corner Decorative Leaf Patterns (SVG Data URIs) */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 100 100'%3E%3Cpath fill='%232e5339' fill-opacity='0.12' d='M50,0 C65,25 80,35 100,50 C75,65 65,80 50,100 C35,75 20,65 0,50 C25,35 35,20 50,0 Z'/%3E%3Cpath stroke='%231b3823' stroke-width='1.5' stroke-opacity='0.15' fill='none' d='M50,0 Q50,50 100,50 M50,0 Q50,50 0,50 M50,100 Q50,50 100,50 M50,100 Q50,50 0,50'/%3E%3C/svg%3E"),
+                /* Organic Leaf Shape Gradients */
+                radial-gradient(circle at 10% 20%, rgba(163, 194, 176, 0.7) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(138, 172, 150, 0.6) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(240, 245, 241, 0.8) 0%, transparent 80%);
+            background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+            background-position: center, center, center, center;
+            background-size: 140px 140px, cover, cover, cover;
+            background-attachment: fixed;
+            color: #1b2e21;
             min-height: 100vh;
             padding: 40px 20px;
         }
@@ -27,15 +38,17 @@
 
         .header h1 {
             font-size: 2.8rem;
-            letter-spacing: 2px;
-            color: #0f172a;
-            margin-bottom: 10px;
-            font-weight: 600;
+            letter-spacing: 3px;
+            color: #122417;
+            margin-bottom: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .header p {
-            color: #475569;
+            color: #3b5743;
             font-size: 1.1rem;
+            font-weight: 500;
         }
 
         /* Gallery Layout (Centered Cards) */
@@ -52,12 +65,13 @@
         .art-card {
             width: 300px;
             background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            box-shadow: 0 12px 30px rgba(27, 46, 33, 0.1);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -65,7 +79,8 @@
 
         .art-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(27, 46, 33, 0.18);
+            border-color: rgba(255, 255, 255, 0.95);
         }
 
         .img-box {
@@ -87,7 +102,7 @@
         }
 
         .art-info {
-            padding: 20px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -96,19 +111,19 @@
         .art-title {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #0f172a;
+            color: #122417;
         }
 
         .art-details {
             font-size: 0.9rem;
-            color: #64748b;
+            color: #4a6652;
         }
 
         .art-price {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: #15803d;
-            margin-top: 5px;
+            color: #1a5e2f;
+            margin-top: 4px;
         }
 
         /* Fullscreen Preview Lightbox Modal */
@@ -119,7 +134,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(10, 20, 13, 0.88);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -131,7 +146,7 @@
             max-width: 90%;
             max-height: 85vh;
             border-radius: 12px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
             object-fit: contain;
             animation: zoomIn 0.3s ease;
         }
@@ -144,6 +159,11 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: #8ac29d;
         }
 
         @keyframes zoomIn {
@@ -169,23 +189,9 @@
             <div class="art-info">
                 <div class="art-title">Abstract Oil Painting</div>
                 <div class="art-details">Oil on Canvas | 24 x 36 in</div>
-                <div class="art-price">Rs. 30,000</div>
+                <div class="art-price">Rs. 75,000</div>
             </div>
         </div>
-
-        <!-- තව Art Cards එකතු කරන්න ඕන නම් පහත කොටසේ Comment අයින් කරලා පාවිච්චි කරන්න -->
-        <!-- 
-        <div class="art-card" onclick="openPreview(this)">
-            <div class="img-box">
-                <img src="your-image2.jpg" alt="Artwork Title">
-            </div>
-            <div class="art-info">
-                <div class="art-title">Artwork Title</div>
-                <div class="art-details">Medium | Size</div>
-                <div class="art-price">Rs. 50,000</div>
-            </div>
-        </div>
-        -->
 
     </div>
 
