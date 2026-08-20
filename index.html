@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art By Shameera</title>
+    <title>Art Gallery</title>
     <style>
         * {
             box-sizing: border-box;
@@ -12,21 +12,14 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-body {
-    background: linear-gradient(135deg, #e6efea 0%, #c3d8cc 50%, #a3c2b0 100%);
-    color: #1a365d;
-    min-height: 100vh;
-    padding: 40px 20px;
-}
+        /* Aesthetic Sage Green Gradient Background */
+        body {
+            background: linear-gradient(135deg, #e6efea 0%, #c3d8cc 50%, #a3c2b0 100%);
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
 
-/* Glassmorphism Art Cards (මේ BG එකට ගොඩක්ම ලස්සන වෙන Cards) */
-.art-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
         .header {
             text-align: center;
             margin-bottom: 50px;
@@ -35,33 +28,35 @@ body {
         .header h1 {
             font-size: 2.8rem;
             letter-spacing: 2px;
-            color: #f3f4f6;
+            color: #0f172a;
             margin-bottom: 10px;
             font-weight: 600;
         }
 
         .header p {
-            color: #94a3b8;
+            color: #475569;
             font-size: 1.1rem;
         }
 
-        /* Gallery Grid Layout */
+        /* Gallery Layout (Centered Cards) */
         .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Art Card Styling */
+        /* Glassmorphism Art Card */
         .art-card {
-            background: rgba(30, 41, 59, 0.7);
+            width: 300px;
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             cursor: pointer;
             display: flex;
@@ -70,8 +65,7 @@ body {
 
         .art-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
-            border-color: rgba(234, 179, 8, 0.4); /* Gold highlight */
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
         }
 
         .img-box {
@@ -102,22 +96,22 @@ body {
         .art-title {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #f8fafc;
+            color: #0f172a;
         }
 
         .art-details {
             font-size: 0.9rem;
-            color: #94a3b8;
+            color: #64748b;
         }
 
         .art-price {
             font-size: 1.2rem;
             font-weight: 700;
-            color: #facc15; /* Gold Price Text */
+            color: #15803d;
             margin-top: 5px;
         }
 
-        /* Modal / Fullscreen Preview Styling */
+        /* Fullscreen Preview Lightbox Modal */
         .modal {
             display: none;
             position: fixed;
@@ -125,7 +119,7 @@ body {
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -137,7 +131,7 @@ body {
             max-width: 90%;
             max-height: 85vh;
             border-radius: 12px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             object-fit: contain;
             animation: zoomIn 0.3s ease;
         }
@@ -150,11 +144,6 @@ body {
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        .close-btn:hover {
-            color: #facc15;
         }
 
         @keyframes zoomIn {
@@ -184,30 +173,29 @@ body {
             </div>
         </div>
 
-        <!-- ARTWORK 2 (ඔයාට අලුත් Image එකක් දාගන්න අවශ්‍ය නම් මෙතන Edit කරගන්න) -->
+        <!-- තව Art Cards එකතු කරන්න ඕන නම් පහත කොටසේ Comment අයින් කරලා පාවිච්චි කරන්න -->
         <!-- 
         <div class="art-card" onclick="openPreview(this)">
             <div class="img-box">
-                <img src="chathuiranga2.jpg" alt="Painting 2">
+                <img src="your-image2.jpg" alt="Artwork Title">
             </div>
             <div class="art-info">
-                <div class="art-title">Modern Painting</div>
-                <div class="art-details">Acrylic on Canvas | 18 x 24 in</div>
-                <div class="art-price">Rs. 350,000</div>
+                <div class="art-title">Artwork Title</div>
+                <div class="art-details">Medium | Size</div>
+                <div class="art-price">Rs. 50,000</div>
             </div>
         </div>
         -->
 
     </div>
 
-    <!-- Fullscreen Preview Popup Box -->
+    <!-- Fullscreen Image Preview Popup -->
     <div id="imageModal" class="modal" onclick="closePreview()">
         <span class="close-btn">&times;</span>
         <img class="modal-content" id="fullImage">
     </div>
 
     <script>
-        // Function to open image full preview
         function openPreview(card) {
             const imgSrc = card.querySelector('img').src;
             const modal = document.getElementById('imageModal');
@@ -217,7 +205,6 @@ body {
             modal.style.display = 'flex';
         }
 
-        // Function to close image preview
         function closePreview() {
             document.getElementById('imageModal').style.display = 'none';
         }
