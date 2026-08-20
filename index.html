@@ -3,78 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Art Gallery</title>
+    <title>Art Gallery</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f9f9f9; color: #333; }
-        header { background: #111; color: #fff; padding: 40px 20px; text-align: center; }
-        header h1 { font-size: 2.5rem; letter-spacing: 2px; }
-        header p { color: #aaa; margin-top: 10px; }
-        
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .section-title { text-align: center; margin-bottom: 30px; font-size: 1.8rem; }
-        
-        /* Gallery Grid */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .art-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
-        .art-card:hover { transform: translateY(-5px); }
-        .art-card img { width: 100%; height: 250px; object-fit: cover; }
-        .art-info { padding: 20px; text-align: center; }
-        .art-title { font-size: 1.2rem; margin-bottom: 8px; font-weight: bold; }
-        .art-details { color: #666; font-size: 0.9rem; margin-bottom: 12px; }
-        .art-price { font-weight: bold; color: #d9534f; font-size: 1.1rem; }
-        
-        /* Contact Section */
-        .contact-section { background: #fff; padding: 40px; border-radius: 8px; margin-top: 50px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .contact-section p { margin: 10px 0; color: #555; }
-        
-        footer { text-align: center; padding: 20px; background: #111; color: #777; margin-top: 50px; font-size: 0.9rem; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Premium Elegant Dark Background */
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            color: #f3f4f6;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        /* Gallery Grid Layout */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Art Card Styling */
+        .art-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .art-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+            border-color: rgba(234, 179, 8, 0.4); /* Gold highlight */
+        }
+
+        .img-box {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .art-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .art-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .art-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .art-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+
+        .art-details {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .art-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #facc15; /* Gold Price Text */
+            margin-top: 5px;
+        }
+
+        /* Modal / Fullscreen Preview Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            object-fit: contain;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #f8fafc;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: #facc15;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
+    <div class="header">
         <h1>ART GALLERY</h1>
-        <p>Explore Fine Arts & Masterpieces</p>
-    </header>
-
-    <div class="container">
-        <h2 class="section-title">Featured Artworks</h2>
-        
-        <div class="gallery-grid">
-            <!-- Artwork 1 -->
-<div class="art-card">
-    <img src="chathuiranga.jpg" alt="Painting 1">
-    <div class="art-info">
-        <div class="art-title">HowLite Moment</div>
-        <div class="art-details">Oil on Canvas | 24 x 36 in</div>
-        <div class="art-price">Rs. 60,000</div>
+        <p>Explore original paintings and digital artworks</p>
     </div>
-</div>
 
-            <!-- Artwork 3 -->
-            <div class="art-card">
-                <img src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=500" alt="Painting 3">
-                <div class="art-info">
-                    <div class="art-title">Modern Portrait</div>
-                    <div class="art-details">Watercolor | 12 x 16 in</div>
-                    <div class="art-price">Rs. 12,000</div>
-                </div>
+    <div class="gallery-container">
+
+        <!-- ARTWORK 1 -->
+        <div class="art-card" onclick="openPreview(this)">
+            <div class="img-box">
+                <img src="chathuiranga.jpg" alt="Abstract Oil Painting">
+            </div>
+            <div class="art-info">
+                <div class="art-title">Abstract Oil Painting</div>
+                <div class="art-details">Oil on Canvas | 24 x 36 in</div>
+                <div class="art-price">Rs. 2,250,000</div>
             </div>
         </div>
 
-        <!-- Contact Details -->
-        <div class="contact-section">
-            <h2>Contact Gallery</h2>
-            <p><strong>Location:</strong> Colombo, Sri Lanka</p>
-            <p><strong>Phone:</strong> +94 7X XXX XXXX</p>
-            <p><strong>Email:</strong> info@myartgallery.com</p>
+        <!-- ARTWORK 2 (ඔයාට අලුත් Image එකක් දාගන්න අවශ්‍ය නම් මෙතන Edit කරගන්න) -->
+        <!-- 
+        <div class="art-card" onclick="openPreview(this)">
+            <div class="img-box">
+                <img src="chathuiranga2.jpg" alt="Painting 2">
+            </div>
+            <div class="art-info">
+                <div class="art-title">Modern Painting</div>
+                <div class="art-details">Acrylic on Canvas | 18 x 24 in</div>
+                <div class="art-price">Rs. 350,000</div>
+            </div>
         </div>
+        -->
+
     </div>
 
-    <footer>
-        <p>&copy; 2026 Art Gallery. All Rights Reserved.</p>
-    </footer>
+    <!-- Fullscreen Preview Popup Box -->
+    <div id="imageModal" class="modal" onclick="closePreview()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="fullImage">
+    </div>
+
+    <script>
+        // Function to open image full preview
+        function openPreview(card) {
+            const imgSrc = card.querySelector('img').src;
+            const modal = document.getElementById('imageModal');
+            const fullImg = document.getElementById('fullImage');
+            
+            fullImg.src = imgSrc;
+            modal.style.display = 'flex';
+        }
+
+        // Function to close image preview
+        function closePreview() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
