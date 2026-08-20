@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Art Gallery</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; }
+        header { background: #111; color: #fff; padding: 40px 20px; text-align: center; }
+        header h1 { font-size: 2.5rem; letter-spacing: 2px; }
+        header p { color: #aaa; margin-top: 10px; }
+        
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 30px; font-size: 1.8rem; }
+        
+        /* Gallery Grid */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .art-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .art-card:hover { transform: translateY(-5px); }
+        .art-card img { width: 100%; height: 250px; object-fit: cover; }
+        .art-info { padding: 20px; text-align: center; }
+        .art-title { font-size: 1.2rem; margin-bottom: 8px; font-weight: bold; }
+        .art-details { color: #666; font-size: 0.9rem; margin-bottom: 12px; }
+        .art-price { font-weight: bold; color: #d9534f; font-size: 1.1rem; }
+        
+        /* Contact Section */
+        .contact-section { background: #fff; padding: 40px; border-radius: 8px; margin-top: 50px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .contact-section p { margin: 10px 0; color: #555; }
+        
+        footer { text-align: center; padding: 20px; background: #111; color: #777; margin-top: 50px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ART GALLERY</h1>
+        <p>Explore Fine Arts & Masterpieces</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Featured Artworks</h2>
+        
+        <div class="gallery-grid">
+            <!-- Artwork 1 -->
+            <div class="art-card">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=500" alt="Painting 1">
+                <div class="art-info">
+                    <div class="art-title">Abstract Oil Painting</div>
+                    <div class="art-details">Oil on Canvas | 24 x 36 in</div>
+                    <div class="art-price">Rs. 25,000</div>
+                </div>
+            </div>
+
+            <!-- Artwork 2 -->
+            <div class="art-card">
+                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500" alt="Painting 2">
+                <div class="art-info">
+                    <div class="art-title">Nature Landscape</div>
+                    <div class="art-details">Acrylic on Board | 18 x 24 in</div>
+                    <div class="art-price">Rs. 18,000</div>
+                </div>
+            </div>
+
+            <!-- Artwork 3 -->
+            <div class="art-card">
+                <img src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=500" alt="Painting 3">
+                <div class="art-info">
+                    <div class="art-title">Modern Portrait</div>
+                    <div class="art-details">Watercolor | 12 x 16 in</div>
+                    <div class="art-price">Rs. 12,000</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="contact-section">
+            <h2>Contact Gallery</h2>
+            <p><strong>Location:</strong> Colombo, Sri Lanka</p>
+            <p><strong>Phone:</strong> +94 7X XXX XXXX</p>
+            <p><strong>Email:</strong> info@myartgallery.com</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Art Gallery. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
